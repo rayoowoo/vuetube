@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Navbar />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from './components/Navbar'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Navbar
+  },
+  data() {
+    return {
+      // videos // an array of objects, video objects
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* CSS reset parameters */
+ body, h1, h2, h3, p, li, ul, ol, nav, section, header, footer, strong, div, span, aside, a, button, form, input, textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    text-decoration: inherit;
+    background: transparent;
+ }
+
+ ul, ol {
+     list-style: none;
+ }
+
+ a:-webkit-any-link {
+     color: rgb(136, 54, 54);
+ }
 </style>
