@@ -1,6 +1,15 @@
 <template>
   <div class="login">
-      <h1>HI</h1>
+      <h1>Sign in</h1>
+      <h2>to continue to VueTube</h2>
+
+    <form>
+        <input type="username" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button>Submit</button>
+    </form>
+
+    <span>Create account</span>
   </div>
 </template>
 
