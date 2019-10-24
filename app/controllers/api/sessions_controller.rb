@@ -1,6 +1,6 @@
 class Api::SessionsController < ApplicationController
     def create 
-        @user = User.with_attached_profile_photo.find_by_credentials(
+        @user = User.find_by_credentials(
             params[:user][:username],
             params[:user][:password]
         )

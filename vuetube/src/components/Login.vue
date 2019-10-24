@@ -3,9 +3,9 @@
       <h1>Sign in</h1>
       <h2>to continue to VueTube</h2>
 
-    <form>
-        <input type="username" placeholder="Username">
-        <input type="password" placeholder="Password">
+    <form @submit.prevent="signin">
+        <input v-model="username" type="username" placeholder="Username">
+        <input v-model="password" type="password" placeholder="Password">
         <button>Submit</button>
     </form>
 
@@ -14,12 +14,29 @@
 </template>
 
 <script>
+import {securedAxiosInstance} from '../backend/axios'
 export default {
-  name: "Login"
+  name: "Login",
+  data() {
+    return {
+      username: '',
+      password: '',
+      error: ''
+    }
+  },
+  methods: {
+    signin() {
+      securedAxiosInstance.post('/api/session', {username: this.username, password: this.password})
+    }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.login {
+  width: 80em;
+  height: 100em;
+  margin: 0 auto;
+}
 </style>
