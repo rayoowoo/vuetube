@@ -1,22 +1,16 @@
 <template>
   <div id="app">
-    <Navbar />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-
 export default {
   name: 'app',
-  components: {
-    Navbar
-  },
   data() {
-    return {
-      // videos // an array of objects, video objects
-    }
-  }
+    // currentRoute: window.location.pathname
+  },
+
 }
 </script>
 
@@ -38,5 +32,13 @@ export default {
 
  a:-webkit-any-link {
      color: rgb(136, 54, 54);
+ }
+
+ body {
+   font-family: 'Roboto';
+ }
+
+ button:hover {
+   cursor: pointer;
  }
 </style>
