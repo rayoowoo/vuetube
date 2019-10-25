@@ -27,14 +27,16 @@ export default {
       username: '',
       password: '',
       error: '',
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-
+      csrf: null
     }
   },
   methods: {
     signin() {
       plainAxiosInstance.post('/api/session', {username: this.username, password: this.password})
     }
+  },
+  created() {
+    this.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
   }
 }
 </script>
