@@ -6,13 +6,14 @@
         <h2>to continue to VueTube</h2>
 
       <form @submit.prevent="signin">
-        <input type="hidden" name="authenticity_token" :value="csrf">
           <input v-model="username" type="username" placeholder="Username">
           <input v-model="password" type="password" placeholder="Password">
           <button>Submit</button>
       </form>
 
-      <span>Create account</span>
+      <button @submit.prevent="signout">Signout</button>
+
+      <div>Create account</div>
 
     </div>
   </div>
@@ -27,16 +28,19 @@ export default {
       username: '',
       password: '',
       error: '',
-      csrf: null
     }
   },
   methods: {
     signin() {
       plainAxiosInstance.post('/api/session', {username: this.username, password: this.password})
+          .then(this.$router.push('/'));
+    },
+    signout() {
+      plainAxiosInstance.delete('/api/session')
+          .then(this.$router.push('/'));
     }
   },
   created() {
-    this.csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
   }
 }
 </script>
