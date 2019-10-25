@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     resources :videos, only: [:index, :show, :create, :destroy, :update]
+
+    resources :playlists
+    resources :playlist_video_items
   end
 
   root to: 'static_pages#root'
