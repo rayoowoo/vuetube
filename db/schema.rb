@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_180552) do
+ActiveRecord::Schema.define(version: 2019_10_25_181502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlist_video_items", force: :cascade do |t|
+    t.integer "playlist_id"
+    t.integer "video_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["playlist_id", "video_id"], name: "index_playlist_video_items_on_playlist_id_and_video_id", unique: true
+    t.index ["playlist_id"], name: "index_playlist_video_items_on_playlist_id"
+    t.index ["video_id"], name: "index_playlist_video_items_on_video_id"
+  end
 
   create_table "playlists", force: :cascade do |t|
     t.string "name", null: false
