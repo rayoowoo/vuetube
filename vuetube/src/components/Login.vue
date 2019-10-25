@@ -4,6 +4,7 @@
       <h2>to continue to VueTube</h2>
 
     <form @submit.prevent="signin">
+      <input type="hidden" name="authenticity_token" :value="csrf">
         <input v-model="username" type="username" placeholder="Username">
         <input v-model="password" type="password" placeholder="Password">
         <button>Submit</button>
@@ -14,19 +15,21 @@
 </template>
 
 <script>
-import {securedAxiosInstance} from '../backend/axios'
+import {plainAxiosInstance} from '../backend/axios'
 export default {
   name: "Login",
   data() {
     return {
       username: '',
       password: '',
-      error: ''
+      error: '',
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
     }
   },
   methods: {
     signin() {
-      securedAxiosInstance.post('/api/session', {username: this.username, password: this.password})
+      plainAxiosInstance.post('/api/session', {username: this.username, password: this.password})
     }
   }
 }
