@@ -44,6 +44,7 @@ export default {
   min-width: 800px;
   margin: 0 auto;
   justify-content: space-between;
+  background-color: white;
 }
 
 .navbar-logo {
