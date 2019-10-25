@@ -11,5 +11,5 @@ Video.delete_all
 
 ruiyu = User.create!(username: "rayoowooh", password: "rayoowooh", first_name: "Ruiyu", last_name: "Wu");
 
-video1 = Video.create!(title: "More", description: "you wanted more?????", url: "https://www.youtube.com/watch?v=jHUnLSQVtrA", user_id: ruiyu.id)
-video2 = Video.create!(title: "We fight", description: "Team Cap vs Team Iron Man", url: "https://www.youtube.com/watch?v=cfVY9wLKltA", user_id: ruiyu.id)
+video1 = Video.create!(title: "More", description: "you wanted more?????", url: "https://www.youtube.com/embed/jHUnLSQVtrA", user_id: ruiyu.id)
+video2 = Video.create!(title: "We fight", description: "Team Cap vs Team Iron Man", url: "https://www.youtube.com/embed/cfVY9wLKltA", user_id: ruiyu.id)

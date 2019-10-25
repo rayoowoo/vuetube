@@ -1,11 +1,11 @@
 class Api::VideosController < ApplicationController
     def index
-        @videos = Video.all.include(:uploader)
+        @videos = Video.includes(:uploader).all
         render :index
     end
 
     def show
-        @video = Video.find(params[:id]).include(:uploader)
+        @video = Video.includes(:uploader).find(params[:id])
         render :show
     end
 
@@ -19,7 +19,7 @@ class Api::VideosController < ApplicationController
     end
 
     def update
-        @video = Video.find(params[:id]).include(:uploader)
+        @video = Video.includes(:uploader).find(params[:id])
         if @video.update_attributes(video_params)
             render :show
         else

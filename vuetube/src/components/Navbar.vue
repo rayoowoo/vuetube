@@ -20,8 +20,7 @@
 export default {
   name: "Navbar",
   methods: {
-    nav: function(e) {
-      e.preventDefault();
+    nav: function() {
       this.$router.push('/login')
     }
   }

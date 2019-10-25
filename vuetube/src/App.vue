@@ -6,11 +6,7 @@
 
 <script>
 export default {
-  name: 'app',
-  data() {
-    // currentRoute: window.location.pathname
-  },
-
+  name: 'app'
 }
 </script>
 
