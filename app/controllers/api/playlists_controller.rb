@@ -5,7 +5,7 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def show
-        @playlist = Playlist.find(params[:id]).includes(:videos)
+        @playlist = Playlist.includes(:videos).find(params[:id])
         render :show
     end
 
@@ -19,7 +19,7 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def update
-        @playlist = Playlist.find(params[:id]).includes(:videos)
+        @playlist = Playlist.includes(:videos).find(params[:id])
         if @playlist.update_attributes(playlist_params)
             render :show
         else
@@ -28,7 +28,7 @@ class Api::PlaylistsController < ApplicationController
     end
 
     def destroy
-        @playlist = Playlist.find(params[:id]).includes(:videos)
+        @playlist = Playlist.includes(:videos).find(params[:id])
         if @playlist 
             @playlist.destroy
             render :show

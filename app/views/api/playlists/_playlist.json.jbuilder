@@ -1,4 +1,4 @@
-json.extract! playlist, :id, :name, :user_id
+json.extract! playlist, :id, :name
 
 json.videos do
     playlist.videos.each do |video|

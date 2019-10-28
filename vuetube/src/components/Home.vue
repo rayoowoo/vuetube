@@ -4,8 +4,15 @@
         <h1 class="landing-recommended">Recommended</h1>
 
         <div class="landing-content">
-            <div v-on:click="nav(video.id)" class="landing-video" v-bind:key="video.id" v-for="video in videos">
+            <div v-on:click="nav(`videos/${video.id}`)" class="landing-video" v-bind:key="video.id" v-for="video in videos">
                 <h2>{{video.title}}</h2>
+            </div>
+        </div>
+
+        <h1 class="landing-recommended">Playlists</h1>
+        <div class="landing-content">
+            <div v-on:click="nav(`playlists/${playlist.id}`)" class="landing-video" v-bind:key="playlist.id" v-for="playlist in playlists">
+                <h2>{{playlist.name}}</h2>
             </div>
         </div>
     </div>
@@ -22,22 +29,31 @@ export default {
     },
     data() {
         return {
-            videos: []
+            videos: [],
+            playlists: []
         }
     }, 
     created() {
-        this.fetchData()
+        this.fetchVideos();
+        this.fetchPlaylists();
     },
     methods: {
-        fetchData() {
+        fetchVideos() {
             plainAxiosInstance.get('/api/videos')
             .then(res => {
                 const videos = JSON.parse(res.request.response).video;
                 this.videos = Object.values(videos);
             })
         },
-        nav: function(id) {
-            this.$router.push(`/video/${id}`)
+        fetchPlaylists() {
+            plainAxiosInstance.get('/api/playlists')
+            .then(res => {
+                const playlists = JSON.parse(res.request.response).playlists;
+                this.playlists = Object.values(playlists);
+            })
+        },
+        nav: function(path) {
+            this.$router.push(path)
         }
     }
 }
