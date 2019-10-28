@@ -15,6 +15,13 @@
                 <h2>{{playlist.name}}</h2>
             </div>
         </div>
+
+         <h1 class="landing-recommended">Genres</h1>
+        <div class="landing-content">
+            <div v-on:click="nav(`genres/${genre.id}`)" class="landing-video" v-bind:key="genre.id" v-for="genre in genres">
+                <h2>{{genre.name}}</h2>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -30,12 +37,14 @@ export default {
     data() {
         return {
             videos: [],
-            playlists: []
+            playlists: [],
+            genres: []
         }
     }, 
     created() {
         this.fetchVideos();
         this.fetchPlaylists();
+        this.fetchGenres();
     },
     methods: {
         fetchVideos() {
@@ -50,6 +59,13 @@ export default {
             .then(res => {
                 const playlists = JSON.parse(res.request.response).playlists;
                 this.playlists = Object.values(playlists);
+            })
+        },
+        fetchGenres() {
+            plainAxiosInstance.get('/api/genres')
+            .then(res => {
+                const genres = JSON.parse(res.request.response).genres;
+                this.genres = Object.values(genres);
             })
         },
         nav: function(path) {

@@ -5,6 +5,7 @@ import Login from '../components/Login.vue'
 import Signup from '../components/Signup.vue'
 import VideoPage from '../components/VideoPage.vue'
 import PlaylistPage from '../components/PlaylistPage.vue'
+import GenrePage from '../components/GenrePage.vue'
 
 Vue.use(Router);
 
@@ -34,20 +35,13 @@ let router = new Router({
             path: '/playlists/:playlistId',
             name: 'PlaylistPage',
             component: PlaylistPage
+        },
+        {
+            path: '/genres/:genreId',
+            name: 'GenrePage',
+            component: GenrePage
         }
     ]
-})
-
-router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (store.getters.isLoggedIn) {
-            next()
-            return
-        }
-        next('/login')
-    } else {
-        next()
-    }
 })
 
 export default router;

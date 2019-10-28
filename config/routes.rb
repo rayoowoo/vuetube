@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     resources :playlists
     resources :playlist_video_items
+    resources :genres
   end
 
   root to: 'static_pages#root'

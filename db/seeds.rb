@@ -9,12 +9,15 @@ User.delete_all
 Video.delete_all
 Playlist.delete_all
 PlaylistVideoItem.delete_all
+Genre.delete_all
 
 
 ruiyu = User.create!(username: "rayoowooh", password: "rayoowooh", first_name: "Ruiyu", last_name: "Wu");
 
-video1 = Video.create!(title: "More", description: "you wanted more?????", url: "https://www.youtube.com/embed/jHUnLSQVtrA", user_id: ruiyu.id)
-video2 = Video.create!(title: "We fight", description: "Team Cap vs Team Iron Man", url: "https://www.youtube.com/embed/cfVY9wLKltA", user_id: ruiyu.id)
+marvel = Genre.create!(name: "Marvel", description: "All things MCU")
+
+video1 = Video.create!(title: "More", description: "you wanted more?????", url: "https://www.youtube.com/embed/jHUnLSQVtrA", user_id: ruiyu.id, genre_id: marvel.id)
+video2 = Video.create!(title: "We fight", description: "Team Cap vs Team Iron Man", url: "https://www.youtube.com/embed/cfVY9wLKltA", user_id: ruiyu.id, genre_id: marvel.id)
 
 playlist1 = Playlist.create!(name: "Playlist 1", user_id: ruiyu.id)
 playlist2 = Playlist.create!(name: "Playlist 2", user_id: ruiyu.id)
