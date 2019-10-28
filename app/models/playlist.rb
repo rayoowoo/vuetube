@@ -13,4 +13,5 @@ class Playlist < ApplicationRecord
     validates :name, :user_id, presence: true;
 
     has_many :playlist_video_items
+    has_many :videos, through: :playlist_video_items, source: :video
 end

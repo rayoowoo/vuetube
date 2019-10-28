@@ -19,5 +19,5 @@ class Video < ApplicationRecord
         class_name: :User
 
     has_many :playlist_video_items
-
+    has_many :playlists, through: :playlist_video_items, source: :playlist
 end
