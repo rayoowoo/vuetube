@@ -18,6 +18,8 @@ class Video < ApplicationRecord
         foreign_key: :user_id,
         class_name: :User
 
+    belongs_to :genre, optional: true
+
     has_many :playlist_video_items
     has_many :playlists, through: :playlist_video_items, source: :playlist
 end
